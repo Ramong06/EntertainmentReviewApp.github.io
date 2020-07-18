@@ -42,3 +42,7 @@
 ## Credits
 
 ## License
+
+## Proposal
+
+The idea for this application is to use a movie and video game API to search for a movie or video game.  Then, the user will be able to write a review under the movie/game they searched.  The review will be saved under the user's username/email (using Passport) and other user's will be able to like or comment on the review. The user will also be able to remove the review if they choose to.
