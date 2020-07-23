@@ -1,41 +1,29 @@
 var express = require("express");
-var session = require("express-session");
-var passport = require("./config/passport");
 
 var PORT = process.env.PORT || 8080;
-var db = require("./models");
 
 var app = express();
 
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static("public"));
+// app.use(express.static("public"));
 
 // Parse application body as JSON
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static("public"));
-
-//sessions to keep track of user's login status
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
 
 // Set Handlebars.
-var exphbs = require("express-handlebars");
+// var exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-// Requiring our routes
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
+// var routes = require("./controllers/eraControllers.js");
 
-app.use(routes);
+// app.use(routes);
 
-// Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
-  });
+// Start our server so that it can begin listening to client requests.
+app.listen(PORT, function() {
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
 });
