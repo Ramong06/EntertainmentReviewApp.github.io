@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Reviewer | LOGIN</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/litera/bootstrap.min.css"
+    />
+    <link href="../public/css/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">LOGO</div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <img />
+        </div>
+        <div class="col-md-6 col-md-offset-3">
+          <form class="card signup">
+            <h5 class="card-title">WELCOME BACK TO RE/VIEWER</h5>
+            <p class="alt-sign-in">
+              NEW MEMBER? <a href="./signup.html">REGISTER</a>
+            </p>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="username-input"
+                placeholder="username"
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                id="password-input"
+                placeholder="password"
+              />
+            </div>
+
+            <div
+              style="display: none;"
+              id="alert"
+              class="alert alert-danger"
+              role="alert"
+            >
+              <span
+                class="glyphicon glyphicon-exclamation-sign"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Error:</span><span class="msg"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+  </body>
+</html>
