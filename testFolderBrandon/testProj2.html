@@ -11,12 +11,38 @@
 </head>
 
 <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="./testProj2.html">Entertainment Review App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                <a class="nav-link" href="./testProj2.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="./videoGameReviews.html">Reviews</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <br>
+    <!-- <a class="btn btn-secondary" href="./testProj2.html" role="button">Home</a>
+
     <br>
     <a class="btn btn-secondary" href="./videoGameReviews.html">Go to Video Game Reviews Page</a>
     <br><br>
     <a class="btn btn-secondary" href="./movieReviews.html">Go to Movie Reviews Page</a>
 
-    <br><hr>
+    <br><hr> -->
 
     <div class="radioButton">
         <h2>Do you want to search for a video game or a movie?</h2>
@@ -26,12 +52,11 @@
             <input type="radio" id="movieSelector" name="searchSelection" value="movieSelector">
             <label for="movieSelector">Movie</label><br>
         </form> 
+        <br><br>
+        <hr>
     </div><!-- .radioButton -->
-    
-    <br><br>
-    <hr>
-    
-    <div class="videoGameSearch">
+
+    <div id="videoGameSearchID" class="videoGameSearch d-none">
         <h3>Video Game API</h3>
         <form>
             <label for="gameTitle">Game Title:</label><br>
@@ -39,22 +64,21 @@
             <br><br>
             <input class="submitGameBtn" type="submit" value="Submit">
         </form>
-        
+
         <br>
 
-        <form>
+        <!-- <form>
             <label for="videoGameReview">Video Game Review:</label><br>
             <textarea id="videoGameReview" name="videoGameReview" placeholder="Enter your remarks here..." rows="4" cols="50"></textarea>
             <br><br>
             <input class="submitGameReviewBtn" type="submit" value="Submit">
-        </form>
+        </form> -->
 
         <br>
+        <hr>
     </div><!-- .videoGameSearch -->
 
-    <hr>
-
-    <div class="movieSearch">
+    <div id="movieSearchID" class="movieSearch d-none">
         <h3>Movie API</h3>
         <form>
             <label for="movieTitle">Movie Title:</label><br>
@@ -65,36 +89,36 @@
 
         <br>
 
-        <form>
+        <!-- <form>
             <label for="movieReview">Movie Review:</label><br>
             <textarea id="movieReview" name="movieReview" placeholder="Enter your remarks here..." rows="4" cols="50"></textarea>
             <br><br>
             <input class="submitMovieReviewBtn" type="submit" value="Submit">
-        </form>
+        </form> -->
 
         <br>
+        
+        <br>
+        <hr>
     </div><!-- .movieSearch -->
 
-    <br>
-    <hr>
+    <div id="cardDivID" class="cardDiv d-none">
+        <h2>API Output Area</h2>
 
-    <h2>API Output Area</h2>
-    <div class="cardDiv">
-
-        <div class="card" style="width: 18rem;">
-            <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <!-- <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                <a href="#" class="btn btn-primary">Go somewhere</a> 
             </div>
-        </div>
+        </div>  -->
 
     </div>
 
     <br>
 
-    <div class="container">
+    <div class="container d-none">
         <div class="row justify-content-around">
             <div class="col-10">
                 <p>Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Quisque velit nisi, pretium ut lacinia in, elementum id enim.</p>

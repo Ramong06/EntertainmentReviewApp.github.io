@@ -1,6 +1,27 @@
 
 $(document).ready(function () {
     
+    $(document).on("click","button.reviewGameBtn", handleGameReviewSelection);
+
+    // $('input[type=radio][name=searchSelection]').change(function() {
+    //     if (this.value == 'gameSelector') {
+    //         console.log("Video Game Selected");
+    //     }
+    //     else if (this.value == 'movieSelector') {
+    //         console.log("Movie Selected");
+    //     }
+    // });
+
+    $('#gameSelector').click(function () {
+        $('#videoGameSearchID').removeClass('d-none');
+        $('.radioButton').addClass('d-none');
+    });
+
+    $('#movieSelector').click(function () {
+        $('#movieSearchID').removeClass('d-none');
+        $('.radioButton').addClass('d-none');
+    });
+
     var userGameSearchInput;
     var userMovieSearchInput;
 
@@ -8,25 +29,30 @@ $(document).ready(function () {
     // var movieReview = $("#movieReview");
 
     // when the review this game button is clicked run the handlegamereviewselection cb func
-    $(document).on("click","reviewGameBtn", handleGameReviewSelection);
     // $(document).on("click","reviewMovieBtn", handleMovieReviewSelection);
 
     $('.submitGameBtn').click(function (e) {
         e.preventDefault();
-    
+
+        $('#cardDivID').removeClass('d-none');
+        $('#videoGameSearchID').addClass('d-none');
+
         userGameSearchInput = $('#gameTitle').val();
-    
+
         getGameDetails();
     });
 
     $('.submitMovieBtn').click(function (e) {
         e.preventDefault();
-    
+
+        $('#cardDivID').removeClass('d-none');
+        $('#movieSearchID').addClass('d-none');
+
         userMovieSearchInput = $('#movieTitle').val();
 
         getMovieDetails();
     });
-    
+
     function getGameDetails() {
         var queryURL =
         "https://api.rawg.io/api/games?search=" + userGameSearchInput + "&page_size=5";
@@ -38,15 +64,13 @@ $(document).ready(function () {
 
             console.group('Video Game API Results');
             console.log(response);
-            
+
             console.log(response.results[0].name);
             console.log(response.results[0].released);
             console.log(response.results[0].rating);
             // console.log(response.results[0].short_screenshots[0].image);
             console.log(response.results[0].background_image);
             console.groupEnd();
-            
-            
 
             // console.log(response.length);
             // console.log(response.name);
@@ -68,7 +92,7 @@ $(document).ready(function () {
                             <small>Released: ${ response.results[i].released }</small></h5>
                             <p class="card-text"> Rating: ${ response.results[i].rating } </p>
                             <p class="card-text">Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt.</p>
-                            <button class="btn btn-light reviewGameBtn" type="submit"><a href="./videoGameReviews.html">Review This Game!</a></button>
+                            <button class="btn btn-light reviewGameBtn" type="submit">Review This Game!</button>
                         </div>
 
                     </div>
@@ -78,10 +102,16 @@ $(document).ready(function () {
             }
         });
         // when reviewgamebtn is clicked add a class of reviewgamecard to the grandparent div element to be loaded on the videogamereviews.html page upon load
+        // assigning a class to the selected card should prevent all of the cards from being sent to the review page when requested
     }
             function handleGameReviewSelection() {
-                (this).parent().parent().addClass('reviewGameCard');
+                (this).parent().parent().addClass('d-none');
         };
+
+    // }
+    //         function handleGameReviewSelection() {
+    //             (this).parent().parent().addClass('reviewGameCard');
+    //     };
             //     function handleGameReviewSelection() {
             //         var selectedGame = $(this).parent().parent().attr('id');
             //         console.log(selectedGame);

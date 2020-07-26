@@ -20,7 +20,7 @@ module.exports = function(app) {
             });
     });
 
-    // GET route for returning reviews of a specific category, video game or movie
+    // GET route for returning reviews of a specific category or genre, video game or movie
     app.get("/api/reviews/category/:category", function(req, res) {
         db.Reviews.findAll({
             where: {
