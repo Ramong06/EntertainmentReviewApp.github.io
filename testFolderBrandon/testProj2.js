@@ -2,6 +2,7 @@
 $(document).ready(function () {
     
     $(document).on("click","button.reviewGameBtn", handleGameReviewSelection);
+    $(document).on("click","button.reviewMovieBtn", handleMovieReviewSelection);
 
     // $('input[type=radio][name=searchSelection]').change(function() {
     //     if (this.value == 'gameSelector') {
@@ -105,7 +106,9 @@ $(document).ready(function () {
         // assigning a class to the selected card should prevent all of the cards from being sent to the review page when requested
     }
             function handleGameReviewSelection() {
-                (this).parent().parent().addClass('d-none');
+                // var gameSelection = $(this).parent().parent().addClass('d-none');
+                var gameSelection = $(this).parent().parent();
+                gameSelection.addClass('d-none');
         };
 
     // }
@@ -146,7 +149,7 @@ $(document).ready(function () {
                             <br>
                             <small>Released: ${ response.Search[0].Year }</small></h5>
                             <p class="card-text">Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt.</p>
-                            <a class="btn btn-secondary reviewMovieBtn" href="./movieReviews.html" role="button">Review This Movie!</a>
+                            <button class="btn btn-light reviewMovieBtn" type="submit">Review This Movie!</button>
                         </div>
 
                     </div>
@@ -157,6 +160,12 @@ $(document).ready(function () {
         });
     }
 
+    function handleMovieReviewSelection() {
+        // var gameSelection = $(this).parent().parent().addClass('d-none');
+        var movieSelection = $(this).parent().parent();
+        movieSelection.addClass('d-none');
+};
+    
     // function handleMovieReviewSelection() {};
 
 });
