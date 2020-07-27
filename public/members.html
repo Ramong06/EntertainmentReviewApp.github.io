@@ -8,19 +8,64 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/litera/bootstrap.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link href="../public/css/styles.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">RE/VIEWER</div>
+    <div class="container-fluid h-100">
+      <div class="row h-100">
+        <aside class="col-12 col-md-2 p-0 bg-dark fixed-top">
+          <nav
+            class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2"
+          >
+            <div class="collapse navbar-collapse align-items-start">
+              <ul
+                class="flex-md-column flex-row navbar-nav w-100 justify-content-between"
+              >
+                <li class="nav-item">
+                  <img class="min-logo" src="assets/entertaintmentlogo.png" />
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link pl-0" href="#"
+                    ><i class="fa fa-star fa-fw"></i>
+                    <span class="d-none d-md-inline">My Ratings</span></a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link pl-0" href="#"
+                    ><i class="fa fa-film fa-fw"></i>
+                    <span class="d-none d-md-inline">Movies</span></a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-0" href="#"
+                    ><i class="fa fa-gamepad fa-fw"></i>
+                    <span class="d-none d-md-inline">Games</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </aside>
+        <main class="col offset-md-2 bg-faded py-2">
+          <h2>Search for a Movie or Game</h2>
+          <form class="form-inline">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input
+              class="form-control form-control-sm ml-3 w-50"
+              type="text"
+              placeholder="search by title"
+              aria-label="Search"
+            />
+          </form>
+        </main>
       </div>
-    </nav>
-
-    <div class="container">
-
-
-            
+    </div>
   </body>
   <script src="https://code.jquery.com/jquery.js"></script>
   <script
@@ -28,5 +73,5 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"
   ></script>
-  <script src=""></script>
+  <script type="text/javascript" src="js/members.js"></script>
 </html>
