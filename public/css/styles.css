@@ -11,6 +11,7 @@ html {
 }
 h2 {
   text-align: center;
+  color: white;
 }
 h5 {
   text-align: center;
@@ -32,14 +33,16 @@ h5 {
   margin-top: 10px;
 }
 
-/* form.signup,
-form.login {
-  margin-top: 50px;
-} */
-
 .btn {
   font-size: 14px;
   width: 100px;
+  color: lightgray;
+  background-color: darkred;
+}
+
+.btn:hover {
+  background-color: #ac2219;
+  color: lightgray;
 }
 
 .intro-logo {
@@ -52,12 +55,6 @@ form.login {
 
 .card-title {
   padding-bottom: 5px;
-}
-
-@media (min-width: 768px) {
-  aside {
-    height: 100%;
-  }
 }
 
 .navbar.bg-dark {
@@ -84,4 +81,9 @@ main {
   width: auto;
   max-width: 300px;
   max-height: 300px;
+}
+@media (min-width: 768px) {
+  aside {
+    height: 100%;
+  }
 }
