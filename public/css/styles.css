@@ -58,7 +58,7 @@ h5 {
 }
 
 .navbar.bg-dark {
-  background-color: slategrey !important;
+  background-color: #97a7b7 !important;
 }
 
 main {
@@ -86,4 +86,14 @@ main {
   aside {
     height: 100%;
   }
+}
+
+.jumbotron {
+  background-color: #2e3338;
+}
+
+.newReview {
+  padding: 10px;
+  margin: 10px;
+  background-color: #97a7b7;
 }
