@@ -95,7 +95,6 @@ $(document).ready(function () {
                             <p class="card-text">Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt.</p>
                             <button class="btn btn-light reviewGameBtn" type="submit">Review This Game!</button>
                         </div>
-
                     </div>
                     <br>
                 `);
@@ -111,11 +110,20 @@ $(document).ready(function () {
                 $('div:not(.reviewThisDiv)').addClass('d-none');
                 $('.reviewThisDiv').appendTo('body');
 
-                $('.reviewThisDiv').wrap( "<div class='container col-md-6 shadow-sm p-3 mb-5 bg-white rounded'></div>" );
+                $('.reviewThisDiv').wrap( "<div class='container col-md-6 col-sm-6 shadow-sm p-3 mb-5 bg-white rounded'></div>" );
 
                 // $('.reviewThisDiv').wrap( "<div class='container col-md-6 shadow-sm p-3 mb-5 bg-white rounded' style='width:300px; height:300px;'></div>" );
 
-                var reviewForm = $('<input class="reviewForm">').attr('form');
+                $('#reviewTitle').removeClass('d-none');
+                $('#reviewTitle').appendTo('.reviewThisDiv');
+
+                $('#reviewForm').removeClass('d-none');
+                $('#reviewForm').appendTo('.reviewThisDiv');
+
+                $('#reviewCategory').removeClass('d-none');
+                $('#reviewCategory').appendTo('.reviewThisDiv');
+                // $('#reviewCategory').prependTo('.reviewThisDiv');
+
         };
 
         //     function handleGameReviewSelection() {

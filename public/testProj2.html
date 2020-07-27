@@ -116,14 +116,45 @@
 
     <br>
 
-    <div id="reviewForm" class="container d-none">
+    <div id="reviewTitle" class="input-group my-2 d-none">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Title Review">
+    </div>
+
+    <div id="reviewForm" class="md-form my-1 d-none">
+        <textarea id="reviewFormID" class="md-textarea form-control" rows="3" placeholder="Enter your review..." ></textarea>
+        <label for="reviewFormID"></label>
+    </div>
+
+    <!-- <div id="reviewCategory" class="input-group my-2 d-none">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Genre (Action, Horror, etc)...">
+    </div> -->
+
+    <div id="reviewCategory" class="dropdown d-none">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="">Action</a>
+            <a class="dropdown-item" href="">Horror</a>
+            <a class="dropdown-item" href="">Adventure</a>
+        </div>
+    </div>
+
+
+    <!-- <div id="reviewForm" class="container">
         <form>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Example textarea</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
             </div>
         </form>
-    </div>
+    </div> -->
 
     <div class="container d-none">
         <div class="row justify-content-around">
