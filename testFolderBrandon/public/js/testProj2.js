@@ -106,10 +106,66 @@ $(document).ready(function () {
         // assigning a class to the selected card should prevent all of the cards from being sent to the review page when requested
     }
             function handleGameReviewSelection() {
-                // var gameSelection = $(this).parent().parent().addClass('d-none');
-                var gameSelection = $(this).parent().parent();
-                gameSelection.addClass('d-none');
+                var gameSelection = $(this).parent().parent().children();
+                gameSelection.addClass('reviewThisDiv');
+                $('div:not(.reviewThisDiv)').addClass('d-none');
+                $('.reviewThisDiv').appendTo('body');
+
+                $('.reviewThisDiv').wrap( "<div class='container col-md-6 shadow-sm p-3 mb-5 bg-white rounded'></div>" );
+
+                // $('.reviewThisDiv').wrap( "<div class='container col-md-6 shadow-sm p-3 mb-5 bg-white rounded' style='width:300px; height:300px;'></div>" );
+
+                var reviewForm = $('<input class="reviewForm">').attr('form');
         };
+
+        //     function handleGameReviewSelection() {
+        //         var gameSelection = $(this).parent().parent().children();
+        //         gameSelection.addClass('reviewThisDiv');
+        //         $('div:not(.reviewThisDiv)').addClass('d-none');
+        //         $('.reviewThisDiv').appendTo('body');
+
+        //         $('.reviewThisDiv').wrap( "<div class='container col-md-6 shadow-sm p-3 mb-5 bg-white rounded'></div>" );
+
+        //         // $('.reviewThisDiv').wrap( "<div class='container col-md-6 shadow-sm p-3 mb-5 bg-white rounded' style='width:300px; height:300px;'></div>" );
+
+        //         // display text area form for user to enter review
+        //         $('#reviewForm').removeClass('d-none');
+        //         $('#reviewForm').append('.reviewThisDiv');
+        // };
+
+        //     function handleGameReviewSelection() {
+        //         var gameSelection = $(this).parent().parent().children();
+        //         gameSelection.addClass('reviewThisDiv');
+        //         $('div:not(.reviewThisDiv)').hide();
+        //         $('.reviewThisDiv').appendTo('body');
+
+        //         $('.reviewThisDiv').wrap( "<div class='container col-md-6 shadow-sm p-3 mb-5 bg-white rounded'></div>" );
+
+        //         // $('.reviewThisDiv').wrap( "<div class='container col-md-6 shadow-sm p-3 mb-5 bg-white rounded' style='width:300px; height:300px;'></div>" );
+
+        //         // display text area form for user to enter review
+        //         $('#reviewForm').removeClass('d-none');
+        //         $('#reviewForm').appendTo('.reviewThisDiv');
+        // };
+
+        //     function handleGameReviewSelection() {
+        //         var gameSelection = $(this).parent().parent();
+        //         gameSelection.addClass('reviewThisDiv');
+        //         $('div:not(.reviewThisDiv)').hide();
+        //         $('.reviewThisDiv').appendTo('body');
+        // };
+
+        //     function handleGameReviewSelection() {
+        //         var gameSelection = $(this).parent().parent().siblings();
+        //         gameSelection.addClass('reviewThisDiv');
+        //         $('div:not(.reviewThisDiv)').hide();
+        //         $('.reviewThisDiv').appendTo('body');
+        // };
+
+        //     function handleGameReviewSelection() {
+        //         var gameSelection = $(this).parent().parent();
+        //         gameSelection.addClass('d-none');
+        // };
 
     // }
     //         function handleGameReviewSelection() {

@@ -14,17 +14,17 @@ module.exports = function(app) {
 
     // index route loads testProj2.html
     app.get("/", function(req, res) {
-        res.sendFile(path.join(__dirname, "./testProj2.html"));
+        res.sendFile(path.join(__dirname, "../public/testProj2.html"));
     });
 
     // videogamereviews route loads videoGameReviews.html
     app.get("/videogamereviews", function(req, res) {
-        res.sendFile(path.join(__dirname, "./videoGameReviews.html"));
+        res.sendFile(path.join(__dirname, "../public/videoGameReviews.html"));
     });
 
-    // moviereviews route loads movieReviews.html
-    app.get("/moviereviews", function(req, res) {
-        res.sendFile(path.join(__dirname, "./movieReviews.html"));
-    });
+    // // moviereviews route loads movieReviews.html
+    // app.get("/moviereviews", function(req, res) {
+    //     res.sendFile(path.join(__dirname, "./movieReviews.html"));
+    // });
 
 };
