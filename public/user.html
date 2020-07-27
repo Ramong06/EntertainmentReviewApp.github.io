@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Reviewer</title>
+    <title>ENT. REVIEWER</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -22,7 +22,32 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <h2>My Reviews</h2>
+
+         
+
+    <div class="radioButton">
+        <h2>Searching for a video game or movie?</h2>
+        <form>
+            <input type="radio" id="gameSelector" name="searchSelection" value="gameSelector">
+            <label class="radio-selection" for="gameSelector">Video Game</label><br>
+            <input type="radio" id="movieSelector" name="searchSelection" value="movieSelector">
+            <label class="radio-selection" for="movieSelector">Movie</label><br>
+        </form> 
+        <br><br>
+        <hr>
+    </div><!-- .radioButton -->
+
+    <div id="videoGameSearchID" class="videoGameSearch d-none">
+        <h3>Video Game API</h3>
+        <form>
+            <label for="gameTitle">Game Title:</label><br>
+            <input type="text" id="gameTitle" name="gameTitle">
+            <br><br>
+            <input class="submitGameBtn" type="submit" value="Submit">
+        </form>
+
+      
+
 
           <div id="reviews-area"></div>
         </div>
