@@ -209,7 +209,7 @@ $(document).ready(function () {
         .then(function() {
             getReviews(reviewCategory.val());
         });
-    }
+    };
 
     // Cb called to grab reviews again since they are deleted in deleteReview cb???
     getReviews();
@@ -222,7 +222,7 @@ $(document).ready(function () {
             reviewsToAdd.push(createNewRow(reviews[i]));
         }
         reviewContainer.append(reviewsToAdd);
-    }
+    };
 
     // Function constructs new review html
     // Need to ensure function can access reviews.body reviews.category reviews.name
@@ -281,7 +281,7 @@ $(document).ready(function () {
         reviewContainer.empty();
         var messageH2 = $("<h2>");
         messageH2.css({ "text-align": "center", "margin-top": "50px" });
-        messageH2.html("No reviews yet for this genre, navigate <a href='./testProj2'>here</a> in order to create a new review.");
+        messageH2.html("No reviews yet for this genre, navigate <a href='../testProj2'>here</a> in order to create a new review.");
         reviewContainer.append(messageH2);
     };
 
