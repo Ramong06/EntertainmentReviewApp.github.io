@@ -33,14 +33,6 @@
     </nav>
 
     <br>
-    <!-- <a class="btn btn-secondary" href="./testProj2.html" role="button">Home</a>
-
-    <br>
-    <a class="btn btn-secondary" href="./videoGameReviews.html">Go to Video Game Reviews Page</a>
-    <br><br>
-    <a class="btn btn-secondary" href="./movieReviews.html">Go to Movie Reviews Page</a>
-
-    <br><hr> -->
 
     <div class="radioButton">
         <h2>Do you want to search for a video game or a movie?</h2>
@@ -63,17 +55,7 @@
             <input class="submitGameBtn" type="submit" value="Submit">
         </form>
 
-        <br>
-
-        <!-- <form>
-            <label for="videoGameReview">Video Game Review:</label><br>
-            <textarea id="videoGameReview" name="videoGameReview" placeholder="Enter your remarks here..." rows="4" cols="50"></textarea>
-            <br><br>
-            <input class="submitGameReviewBtn" type="submit" value="Submit">
-        </form> -->
-
-        <br>
-        <hr>
+        <br><br><hr>
     </div><!-- .videoGameSearch -->
 
     <div id="movieSearchID" class="movieSearch d-none">
@@ -85,33 +67,12 @@
             <input class="submitMovieBtn" type="submit" value="Submit">
         </form>
 
-        <br>
-
-        <!-- <form>
-            <label for="movieReview">Movie Review:</label><br>
-            <textarea id="movieReview" name="movieReview" placeholder="Enter your remarks here..." rows="4" cols="50"></textarea>
-            <br><br>
-            <input class="submitMovieReviewBtn" type="submit" value="Submit">
-        </form> -->
-
-        <br>
-        
-        <br>
+        <br><br><br>
         <hr>
     </div><!-- .movieSearch -->
 
     <div id="cardDivID" class="cardDiv d-none">
         <h2>API Output Area</h2>
-
-        <!-- <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a> 
-            </div>
-        </div>  -->
-
     </div>
 
     <br>
@@ -128,40 +89,18 @@
         <label for="reviewFormID"></label>
     </div>
 
-    <!-- <div id="reviewCategory" class="input-group my-2 d-none">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-        </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Genre (Action, Horror, etc)...">
-    </div> -->
 
-    <div id="reviewCategory" class="dropdown d-none">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="">Action</a>
-            <a class="dropdown-item" href="">Horror</a>
-            <a class="dropdown-item" href="">Adventure</a>
-        </div>
-    </div>
-
-
-    <!-- <div id="reviewForm" class="container">
-        <form>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Example textarea</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-            </div>
-        </form>
-    </div> -->
-
-    <div class="container d-none">
-        <div class="row justify-content-around">
-            <div class="col-10">
-                <p>Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Quisque velit nisi, pretium ut lacinia in, elementum id enim.</p>
-            </div>
-        </div>
+    <div id="reviewCategory" class="form-group d-none">
+        <select class="custom-select" id="category">
+            <option selected value="">All Genres</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="comedy">Comedy</option>
+            <option value="crime">Crime</option>
+            <option value="horror">Horror</option>
+            <option value="sports">Sports</option>
+            <option value="Other">Other</option>
+        </select>
     </div>
 
     <!--  jQuery Minified -->
