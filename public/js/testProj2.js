@@ -2,9 +2,23 @@
 
 $(document).ready(function () {
     
-    var reviewContainer = $('#reviewForm');
-    var reviewCategory = $('#reviewCategory');
-    var reviewContainerTitle = $('#reviewTitle');
+    var reviewContainer = $('#reviewFormStatic');
+    var reviewCategory = $('#categoryStatic');
+    var reviewContainerTitle = $('#reviewTitleStatic');
+
+    // Sets up listener on reviewSubmitButtonID
+    // Button dynamically created in handleGameReviewSelection cb
+    $(document).on("click","button.reviewSubmitButtonID", handleNewGameReviewSubmission);
+
+    function handleNewGameReviewSubmission() {
+        $.ajax({
+            method: "GET",
+            url: "/"
+        })
+        .then(function () {
+            var 
+        })
+    }
 
     // Document listens for click on reviewGameBtn and reviewMovieBtn
     // Buttons created after results received from api call
@@ -107,14 +121,14 @@ $(document).ready(function () {
 
         $('.reviewThisDiv').wrap( "<div class='container col-md-6 col-sm-6 shadow-sm p-3 mb-5 bg-white rounded'></div>" );
 
-        $('#reviewTitle').removeClass('d-none');
-        $('#reviewTitle').appendTo('.reviewThisDiv');
+        $('#reviewTitleStatic').removeClass('d-none');
+        $('#reviewTitleStatic').appendTo('.reviewThisDiv');
 
-        $('#reviewForm').removeClass('d-none');
-        $('#reviewForm').appendTo('.reviewThisDiv');
+        $('#reviewFormStatic').removeClass('d-none');
+        $('#reviewFormStatic').appendTo('.reviewThisDiv');
 
-        $('#reviewCategory').removeClass('d-none');
-        $('#reviewCategory').appendTo('.reviewThisDiv');
+        $('#categoryStatic').removeClass('d-none');
+        $('#categoryStatic').appendTo('.reviewThisDiv');
 
         var reviewSubmitButton = $('<button type="button" id="reviewSubmitButtonID" class="btn btn-light">Submit Review</button>');
         reviewSubmitButton.appendTo('.reviewThisDiv');
@@ -165,14 +179,14 @@ $(document).ready(function () {
 
         $('.reviewThisDiv').wrap( "<div class='container col-md-6 col-sm-6 shadow-sm p-3 mb-5 bg-white rounded'></div>" );
 
-        $('#reviewTitle').removeClass('d-none');
-        $('#reviewTitle').appendTo('.reviewThisDiv');
+        $('#reviewTitleStatic').removeClass('d-none');
+        $('#reviewTitleStatic').appendTo('.reviewThisDiv');
 
-        $('#reviewForm').removeClass('d-none');
-        $('#reviewForm').appendTo('.reviewThisDiv');
+        $('#reviewFormStatic').removeClass('d-none');
+        $('#reviewFormStatic').appendTo('.reviewThisDiv');
 
-        $('#reviewCategory').removeClass('d-none');
-        $('#reviewCategory').appendTo('.reviewThisDiv');
+        $('#categoryStatic').removeClass('d-none');
+        $('#categoryStatic').appendTo('.reviewThisDiv');
 
         var reviewSubmitButton = $('<button type="button" id="reviewSubmitButtonID" class="btn btn-light">Submit Review</button>');
         reviewSubmitButton.appendTo('.reviewThisDiv');
@@ -278,7 +292,7 @@ $(document).ready(function () {
 
     // Function empties review input form
     function displayEmpty() {
-        reviewContainer.empty();
+        // reviewContainer.empty();
         var messageH2 = $("<h2>");
         messageH2.css({ "text-align": "center", "margin-top": "50px" });
         messageH2.html("No reviews yet for this genre, navigate <a href='../'>here</a> in order to create a new review.");
