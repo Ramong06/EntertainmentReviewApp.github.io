@@ -28,7 +28,9 @@ $(document).ready(function() {
     })
 
     var reviewTitleStatic = $('#reviewTitleStatic').load( "ajax/testProj2.html #reviewTitleStatic");
+    console.group('Title from testProj2.html file!');
     console.log(reviewTitleStatic);
+    console.groupEnd();
 
     // Get url string
     var url = window.location.search;
