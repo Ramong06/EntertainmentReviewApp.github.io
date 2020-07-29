@@ -1,4 +1,3 @@
-
 body,
 html {
   background-color: #343a40;
@@ -8,16 +7,22 @@ h2 {
   text-align: center;
   color: white;
 }
+h3,
+h4,
+.radioSelect {
+  color: white;
+}
 h5 {
   text-align: center;
   font-size: 20px;
 }
-
+.jumbotron {
+  background-color: #2e3338;
+}
 .alt-sign-in {
   font-size: small;
   text-align: right;
 }
-
 .card {
   margin-top: 70px !important;
   background-color: lightgray;
@@ -27,19 +32,16 @@ h5 {
   padding-right: 15px;
   margin-top: 10px;
 }
-
 .btn {
   font-size: 14px;
   width: 100px;
   color: lightgray;
   background-color: darkred;
 }
-
 .btn:hover {
   background-color: #ac2219;
   color: lightgray;
 }
-
 .intro-logo {
   padding-top: 70px;
   height: auto;
@@ -47,52 +49,45 @@ h5 {
   max-width: 350px;
   max-height: 350px;
 }
-
 .card-title {
   padding-bottom: 5px;
 }
-
 .navbar.bg-dark {
   background-color: #97a7b7 !important;
 }
-
 main {
   margin-top: 250px;
 }
-
 .min-logo {
   height: auto;
   width: auto;
   max-width: 100px;
   max-height: 100px;
 }
-
 .user-logo {
   display: block;
   margin: auto;
-
   padding: 10px;
   height: auto;
   width: auto;
   max-width: 300px;
   max-height: 300px;
 }
-@media (min-width: 768px) {
-  aside {
-    height: 100%;
-  }
-}
-
-.jumbotron {
-  background-color: #2e3338;
-}
-
 .newReview {
   padding: 10px;
   margin: 10px;
   background-color: #97a7b7;
 }
-
-.radio-selection {
-  color: white;
+.card {
+  margin-top: 70px !important;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 10px;
+}
+@media (min-width: 768px) {
+  aside {
+    height: 100%;
+  }
 }
