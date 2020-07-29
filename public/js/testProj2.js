@@ -249,7 +249,7 @@ $(document).ready(function () {
     };
 
     var reviewMovieFormContainer = `    <div class="reviewMovieFormContainer container col-md-6 col-sm-6 shadow-sm p-3 mb-5 bg-white rounded">
-        
+
     <div id="reviewTitle" class="input-group my-2">
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
@@ -261,8 +261,7 @@ $(document).ready(function () {
         <textarea id="reviewFormIDStatic" class="md-textarea form-control" rows="3" placeholder="Enter your review..." ></textarea>
         <label for="reviewFormIDStatic"></label>
     </div>
-    
-    
+
     <div id="reviewCategory" class="form-group">
         <select class="custom-select" id="categoryStatic">
             <option selected value="">All Genres</option>
@@ -275,9 +274,9 @@ $(document).ready(function () {
             <option value="Other">Other</option>
         </select>
     </div>
-    
+
     <button type="button" id="reviewMovieSubmitButtonID" class="btn btn-light">Submit Review</button>
-    
+
 </div>`;
 
 
@@ -358,7 +357,7 @@ $(document).ready(function () {
 
     function createNewRow(review) {
         var newGameRow = gameSelection;
-        
+
         // Construct new review html
         // Need to ensure function can access reviews.body reviews.category reviews.name
         newGameRow = 
@@ -371,7 +370,7 @@ $(document).ready(function () {
         newGameRow.data("review", review);
         return newGameRow;
     };
-    
+
     function createNewRow(review) {
         // Function constructs new review html
         // Need to ensure function can access reviews.body reviews.category reviews.name
@@ -424,6 +423,7 @@ $(document).ready(function () {
         getReviews(newReviewCategory);
     };
 
+    
 });
 
 /*

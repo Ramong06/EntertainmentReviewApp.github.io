@@ -2,6 +2,34 @@ $(document).ready(function() {
 
     // $('#cmsTitle').empty();
 
+    // $.ajax({
+    //     url: "/",
+    //     type: "GET",
+    //     success: function(data){
+    //         $(reviewContainerTitle).html(data).find(reviewContainerTitle).html();
+    //         console.log(reviewContainerTitle);
+    //     }
+    // });
+
+    $.get("/api/reviews/", function(data) {
+        
+        if(data.length !== 0) {
+            for (var i = 0; i < data.lenth; i++) {
+                var row = $("<div>");
+                row.addClass("cmsPost");
+
+                row.append("<p>" + data[i].title + " </p>");
+                row.append("<p>" + data[i].category + " </p>");
+                row.append("<p>Review: " + data[i].body + "</p>");
+
+                $('#cmsArea').append(row);
+            }
+        }
+    })
+
+    var reviewTitleStatic = $('#reviewTitleStatic').load( "ajax/testProj2.html #reviewTitleStatic");
+    console.log(reviewTitleStatic);
+
     // Get url string
     var url = window.location.search;
     var reviewId;
