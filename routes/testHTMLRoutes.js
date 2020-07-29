@@ -22,9 +22,9 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/cms.html"));
     });
 
-    // // moviereviews route loads movieReviews.html
-    // app.get("/moviereviews", function(req, res) {
-    //     res.sendFile(path.join(__dirname, "./movieReviews.html"));
-    // });
+    // moviereviews route loads movieReviews.html
+    app.get("/testProj2", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/testProj2.html"));
+    });
 
 };

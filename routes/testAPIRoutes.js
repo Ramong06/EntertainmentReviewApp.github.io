@@ -49,7 +49,7 @@ module.exports = function(app) {
         console.log(req.body);
         db.Reviews.create({
             title: req.body.title,
-            review: req.body.review,
+            body: req.body.body,
             category: req.body.category
         })
         .then(function(dbReviews) {

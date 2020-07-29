@@ -1,60 +1,68 @@
 // const review = require("../../models/review");
 
 $(document).ready(function () {
-    
+
+    // Grab static review elements on page load
     var reviewContainer = $('#reviewFormIDStatic');
     var reviewCategory = $('#categoryStatic');
     var reviewContainerTitle = $('#reviewTitleStatic');
 
-    // Sets up listener on reviewGameSubmitButtonID and reviewMovieSubmitButtonID
-    // Button dynamically created in handleGameReviewSelection cb
+    // Set up listeners on reviewGameSubmitButtonID and reviewMovieSubmitButtonID
+    // Buttons dynamically created in handleGameReviewSelection cb
     $(document).on("click","button.reviewGameSubmitButtonID", handleNewGameReviewSubmission);
     $(document).on("click","button.reviewMovieSubmitButtonID", handleNewMovieReviewSubmission);
 
-    function handleNewGameReviewSubmission() {
-        // Grabs review title, category, and container elements after user clicks submit review button
-            console.group('Review Form Items');
-            console.log(reviewContainerTitle);
-            console.log(reviewCategory);
-            console.log(reviewContainer);
-            console.groupEnd();
-        };
+    function handleNewGameReviewSubmission(id) {
+        // Grab review title, category, and container elements after user clicks submit review button
+        console.group('Review Form Items');
+        console.log(reviewContainerTitle);
+        console.log(reviewCategory);
+        console.log(reviewContainer);
+        console.groupEnd();
+
+        // getReviews();
+    };
 
     function handleNewMovieReviewSubmission() {
-        // Grabs review title, category, and container elements after user clicks submit review button
-            console.group('Review Form Items');
-            console.log(reviewContainerTitle);
-            console.log(reviewCategory);
-            console.log(reviewContainer);
-            console.groupEnd();
-        };
+        // Grab review title, category, and container elements after user clicks submit review button
+        console.group('Review Form Items');
+        console.log(reviewContainerTitle);
+        console.log(reviewCategory);
+        console.log(reviewContainer);
+        console.groupEnd();
 
-    // Document listens for click on reviewGameBtn and reviewMovieBtn
+        // getReviews();
+    };
+
+    // Set up listeners on reviewGameBtn and reviewMovieBtn
     // Buttons created after results received from api call
     $(document).on("click","button.reviewGameBtn", handleGameReviewSelection);
     $(document).on("click","button.reviewMovieBtn", handleMovieReviewSelection);
 
-    // Document listens for click on delete and edit buttons created in createNewRow cb
+    // Set up listeners for delete and edit buttons
+    // Buttons created in createNewRow cb
     $(document).on("click", "button.delete", handleReviewDelete);
     $(document).on("click", "button.edit", handleReviewEdit);
 
-    // Listener for dropdown selection in browser
+    // Set up listener for dropdown selection in browser
     reviewCategory.on("change", handleCategoryChange);
 
-    // Variables used in createNewRow cb
+    // Used in createNewRow cb
     var gameSelection;
     var movieSelection;
     
-    // Variable used in getReviews and initializeRows cb
+    // Used in getReviews and initializeRows cb
     var reviews;
 
-    // If user selects video game radio button the video game search form is rendered
+    // Set up radio button listener
+    // Render game search form if movie selected
     $('#gameSelector').click(function () {
         $('#videoGameSearchID').removeClass('d-none');
         $('.radioButton').addClass('d-none');
     });
 
-    // If user selects movie radio button the movie search form is rendered
+    // Set up radio button listener
+    // Render movie search form if movie selected
     $('#movieSelector').click(function () {
         $('#movieSearchID').removeClass('d-none');
         $('.radioButton').addClass('d-none');
@@ -64,7 +72,8 @@ $(document).ready(function () {
     var userGameSearchInput;
     var userMovieSearchInput;
 
-    // Listener on submit button that grabs user search input and hides search form
+    // Set up listener for button on card after rawg api response
+    // Grab user search input and hide search form
     $('.submitGameBtn').click(function (e) {
         e.preventDefault();
         
@@ -76,7 +85,8 @@ $(document).ready(function () {
         getGameDetails();
     });
     
-    // Listener on submit button that grabs user search input and hides search form
+    // Set up listener for button on card after omdb api response
+    // Grab user search input and hide search form
     $('.submitMovieBtn').click(function (e) {
         e.preventDefault();
 
@@ -120,32 +130,35 @@ $(document).ready(function () {
     };
 
     function handleGameReviewSelection() {
-        // Function adds reviewThisDiv class to grandparent div of the reviewGameBtn element if reviewGameBtn is clicked
-        // Function adds d-none class to hide all divs except for the one the user clicks
-        // Function displays reviewThisDiv element then appends the title input form and category dropdown selector to reviewThisDiv element
+        
+        // Grab grandparent div of reviewGameBtn when clicked
         gameSelection = $(this).parent().parent().children();
         gameSelection.addClass('reviewThisDiv');
+        // Hide all divs except for the one clicked by user
         $('div:not(.reviewThisDiv)').addClass('d-none');
+        // Hide reviewGameBtn
+        $('.reviewGameBtn').addClass('d-none');
         $('.reviewThisDiv').appendTo('body');
-
+        
         $('.reviewThisDiv').wrap( "<div class='container col-md-6 col-sm-6 shadow-sm p-3 mb-5 bg-white rounded'></div>" );
-
+        
         $('#reviewTitleStatic').removeClass('d-none');
         $('#reviewTitleStatic').appendTo('.reviewThisDiv');
-
+        
         $('#reviewFormIDStatic').removeClass('d-none');
         $('#reviewFormIDStatic').appendTo('.reviewThisDiv');
-
+        
         $('#categoryStatic').removeClass('d-none');
         $('#categoryStatic').appendTo('.reviewThisDiv');
-
+        
+        // Display reviewThisDiv element with title input form and genre dropdown menu appended
         var reviewSubmitButton = $('<button type="button" id="reviewGameSubmitButtonID" class="btn btn-light">Submit Review</button>');
         reviewSubmitButton.appendTo('.reviewThisDiv');
 
     };
 
     function getMovieDetails() {
-        // Function sends http get request to omdb api then constructs html element using response
+        // Send http get request to omdb api
         var omdbKey = "285ba2b7";
         var queryURL =
         "http://www.omdbapi.com/?apikey=" + omdbKey + "&s=" + userMovieSearchInput + "&page=1&type=movie";
@@ -156,9 +169,8 @@ $(document).ready(function () {
         }).then( function (response) {
 
             for (let i = 0; i < response.Search.length; i++) {
-
+                //  Construct html element using response
                 $(".cardDiv").append(`
-
                     <div class="card" style="width: 18rem;">
                         <img src="${ response.Search[i].Poster }" class="card-img-top" alt="video game background image">
                         <div class="card-body">
@@ -168,22 +180,21 @@ $(document).ready(function () {
                             <p class="card-text">Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt.</p>
                             <button class="btn btn-light reviewMovieBtn" type="submit">Review This Movie!</button>
                         </div>
-
                     </div>
                     <br>
                 `);
-
             }
         });
     };
 
     function handleMovieReviewSelection() {
-        // Function adds reviewThisDiv class to grandparent div of the reviewMovieBtn element if reviewMovieBtn is clicked
-        // Function adds d-none class to hide all divs except for the one the user clicks
-        // Function displays reviewThisDiv element then appends the title input form and category dropdown selector to reviewThisDiv element
+        // Grab grandparent div of reviewGameBtn when clicked
         movieSelection = $(this).parent().parent().children();
         movieSelection.addClass('reviewThisDiv');
+        // Hide all divs except for the one clicked by user
         $('div:not(.reviewThisDiv)').addClass('d-none');
+        // Hide reviewMovieBtn
+        $('.reviewMovieBtn').addClass('d-none');
         $('.reviewThisDiv').appendTo('body');
 
         $('.reviewThisDiv').wrap( "<div class='container col-md-6 col-sm-6 shadow-sm p-3 mb-5 bg-white rounded'></div>" );
@@ -196,24 +207,24 @@ $(document).ready(function () {
 
         $('#categoryStatic').removeClass('d-none');
         $('#categoryStatic').appendTo('.reviewThisDiv');
-
+        // Display reviewThisDiv element with title input form and genre dropdown menu appended
         var reviewSubmitButton = $('<button type="button" id="reviewMovieSubmitButtonID" class="btn btn-light">Submit Review</button>');
         reviewSubmitButton.appendTo('.reviewThisDiv');
-
     };
 
-
     function getReviews(category) {
-        // Function creates category url and sends get request to api route at the specified category url
-        // Function then checks if reviews variable is empty or null then calls displayEmpty cb else initializeRows cb
+        // Create category url
         var categoryString = category || "";
         if (categoryString) {
             categoryString = "/category/" + categoryString;
         }
+        // Send get request to api route at the specified category url
         $.get("/api/reviews" + categoryString, function(data) {
             console.log("Reviews", data);
             reviews = data;
+            // Check if reviews variable is empty or null
             if (!reviews || !reviews.length) {
+                // Call displayEmpty cb else initializeRows cb
                 displayEmpty();
             }
             else {
@@ -223,13 +234,13 @@ $(document).ready(function () {
     };
 
     function deleteReview(id) {
-        // Function deletes review based on id then calls getReviews cb
-        // Function then passes the genre dropdown selection value into getReviews cb
+        // Send delete request to single review url based on id
         $.ajax({
             method: "DELETE",
-            url: "/api/reviews" + id
+            url: "/api/reviews/" + id
         })
         .then(function() {
+            // Call getReviews passing in the review category dropdown selection
             getReviews(reviewCategory.val());
         });
     };
@@ -238,24 +249,26 @@ $(document).ready(function () {
     getReviews();
 
     function initializeRows() {
-        // Function clears review input text then creates empty variable looping through reviews variable then pushes items to the array and appends those reviews to the array
+        // Clear review input text and create empty array to store reviews
         reviewContainer.empty();
         var reviewsToAdd = [];
         for (var i = 0; i < reviews.length; i++) {
+            // Push items to the array
             reviewsToAdd.push(createNewRow(reviews[i]));
         }
+        // Append reviews to the browser review container
         reviewContainer.append(reviewsToAdd);
     };
 
-    function createNewRow(reviews) {
-        // Function constructs new review html
-        // Need to ensure function can access reviews.body reviews.category reviews.name
+    function createNewRow(review) {
         var newGameRow = gameSelection;
         
+        // Construct new review html
+        // Need to ensure function can access reviews.body reviews.category reviews.name
         newGameRow = 
         $('.newGameRow').append(`
-        <p>${ reviews.review }</p>
-        <small>Genre: ${ reviews.category }  |  Title: ${ reviews.title }</small>
+        <p>${ review.body }</p>
+        <small>Genre: ${ review.category }  |  Title: ${ review.title }</small>
         <button type="button" class="btn btn-warning delete">DELETE</button> 
         <button type="button" class="btn btn-info edit">EDIT</button>
         `);
@@ -280,22 +293,22 @@ $(document).ready(function () {
     };
 
     function handleReviewDelete() {
-        // Function grabs the parent element of the delete button and gives it the "review" attribute
-        // Function passes currentReview.id into deleteReview cb????
         // Function called when user clicks delete button
+        // Grab parent element of the delete button and assign "review" attribute
         var currentReview = $(this)
         .parent()
         .data("review");
+        // Call deleteReview with currentReview passed in
         deleteReview(currentReview.id);
     };
 
     function handleReviewEdit() {
-        // Function grabs the parent element of the edit button and gives it the "review" attribute
-        // Function uses window.location.href to set the current page url to a specific review id
         // Function called when user clicks edit button
+        // Grab parent element of the edit button and assignm "review" attribute
         var currentReview = $(this)
-            .parent()
-            .data("review");
+        .parent()
+        .data("review");
+        // Set the current url to a specific review id
         window.location.href = "/cms?review_id=" + currentReview.id;
     };
 
@@ -309,49 +322,12 @@ $(document).ready(function () {
     };
 
     function handleCategoryChange() {
-        // Function grabs value of genre selected in the category dropdown menu
-        // Function passes selected genre into getReviews cb
+        // Grab value of genre selected in the category dropdown menu
         var newReviewCategory = $(this).val();
+        // Pass selected genre into getReviews cb
         getReviews(newReviewCategory);
     };
 
 
+
 });
-
-
-/************************************************************ */
-
-    // // When #reviewSubmitButtonID clicked; button is created and appended to the review this item card; need listener to handle to post new review
-    // function createNewRow(reviews) {
-    //     var newGameRow = gameSelection;
-    //     var newMovieRow = movieSelection;
-
-    //     // newGameRow.addClass("newGameRow");
-    //     // NEED TO GET THE reviews.body reviews.category reviews.name VARIABLES
-    //     // Need to attach delete attr to DELETE button
-    //     newGameRow = 
-    //     $('.newGameRow').append(`
-    //     <p>${ reviews.body }</p>
-    //     <small>Genre: ${ reviews.category }  |  Title: ${ reviews.name }</small>
-    //     <button type="button" class="btn btn-warning">DELETE</button> 
-    //     <button type="button" class="btn btn-info">EDIT</button>
-    //     `);
-        
-    //     newGameRow.data("review", review);
-        
-    //     // newMovieRow.addClass("newMovieRow");
-    //     // NEED TO GET THE reviews.body reviews.category reviews.name VARIABLES
-    //     // Need to attach edit attr to EDIT button
-    //     newMovieRow = 
-    //     $('.newMovieRow').append(`
-    //         <p>${ reviews.body }</p>
-    //         <small>Genre: ${ reviews.category }  |  Title: ${ reviews.name }</small>
-    //         <button type="button" class="btn btn-warning">DELETE</button>
-    //         <button type="button" class="btn btn-info">EDIT</button>
-    //     `);
-
-    //     newMovieRow.data("review", review);
-
-    //     return [newGameRow, newMovieRow];// HOW TO GET VARIABLES OUT OF ARRAY???
-
-    // };
