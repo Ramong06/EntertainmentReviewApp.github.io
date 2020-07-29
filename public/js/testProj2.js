@@ -2,23 +2,32 @@
 
 $(document).ready(function () {
     
-    var reviewContainer = $('#reviewFormStatic');
+    var reviewContainer = $('#reviewFormIDStatic');
     var reviewCategory = $('#categoryStatic');
     var reviewContainerTitle = $('#reviewTitleStatic');
 
-    // Sets up listener on reviewSubmitButtonID
+    // Sets up listener on reviewGameSubmitButtonID and reviewMovieSubmitButtonID
     // Button dynamically created in handleGameReviewSelection cb
-    $(document).on("click","button.reviewSubmitButtonID", handleNewGameReviewSubmission);
+    $(document).on("click","button.reviewGameSubmitButtonID", handleNewGameReviewSubmission);
+    $(document).on("click","button.reviewMovieSubmitButtonID", handleNewMovieReviewSubmission);
 
     function handleNewGameReviewSubmission() {
-        $.ajax({
-            method: "GET",
-            url: "/"
-        })
-        .then(function () {
-            var 
-        })
-    }
+        // Grabs review title, category, and container elements after user clicks submit review button
+            console.group('Review Form Items');
+            console.log(reviewContainerTitle);
+            console.log(reviewCategory);
+            console.log(reviewContainer);
+            console.groupEnd();
+        };
+
+    function handleNewMovieReviewSubmission() {
+        // Grabs review title, category, and container elements after user clicks submit review button
+            console.group('Review Form Items');
+            console.log(reviewContainerTitle);
+            console.log(reviewCategory);
+            console.log(reviewContainer);
+            console.groupEnd();
+        };
 
     // Document listens for click on reviewGameBtn and reviewMovieBtn
     // Buttons created after results received from api call
@@ -79,8 +88,8 @@ $(document).ready(function () {
         getMovieDetails();
     });
 
-    // Function sends http get request to rawg api then constructs html element using response
     function getGameDetails() {
+        // Send http get request to rawg api
         var queryURL =
         "https://api.rawg.io/api/games?search=" + userGameSearchInput + "&page_size=5";
 
@@ -90,7 +99,7 @@ $(document).ready(function () {
         }).then( function (response) {
 
             for (let i = 0; i < response.results.length; i++) {
-
+                // Construct html element using response
                 $(".cardDiv").append(`
 
                     <div class="card" style="width: 18rem;">
@@ -108,12 +117,12 @@ $(document).ready(function () {
                 `);
             }
         });
-    }
+    };
 
-    // Function adds reviewThisDiv class to grandparent div of the reviewGameBtn element if reviewGameBtn is clicked
-    // Function adds d-none class to hide all divs except for the one the user clicks
-    // Function displays reviewThisDiv element then appends the title input form and category dropdown selector to reviewThisDiv element
     function handleGameReviewSelection() {
+        // Function adds reviewThisDiv class to grandparent div of the reviewGameBtn element if reviewGameBtn is clicked
+        // Function adds d-none class to hide all divs except for the one the user clicks
+        // Function displays reviewThisDiv element then appends the title input form and category dropdown selector to reviewThisDiv element
         gameSelection = $(this).parent().parent().children();
         gameSelection.addClass('reviewThisDiv');
         $('div:not(.reviewThisDiv)').addClass('d-none');
@@ -124,19 +133,19 @@ $(document).ready(function () {
         $('#reviewTitleStatic').removeClass('d-none');
         $('#reviewTitleStatic').appendTo('.reviewThisDiv');
 
-        $('#reviewFormStatic').removeClass('d-none');
-        $('#reviewFormStatic').appendTo('.reviewThisDiv');
+        $('#reviewFormIDStatic').removeClass('d-none');
+        $('#reviewFormIDStatic').appendTo('.reviewThisDiv');
 
         $('#categoryStatic').removeClass('d-none');
         $('#categoryStatic').appendTo('.reviewThisDiv');
 
-        var reviewSubmitButton = $('<button type="button" id="reviewSubmitButtonID" class="btn btn-light">Submit Review</button>');
+        var reviewSubmitButton = $('<button type="button" id="reviewGameSubmitButtonID" class="btn btn-light">Submit Review</button>');
         reviewSubmitButton.appendTo('.reviewThisDiv');
 
     };
 
-    // Function sends http get request to omdb api then constructs html element using response
     function getMovieDetails() {
+        // Function sends http get request to omdb api then constructs html element using response
         var omdbKey = "285ba2b7";
         var queryURL =
         "http://www.omdbapi.com/?apikey=" + omdbKey + "&s=" + userMovieSearchInput + "&page=1&type=movie";
@@ -166,12 +175,12 @@ $(document).ready(function () {
 
             }
         });
-    }
+    };
 
-    // Function adds reviewThisDiv class to grandparent div of the reviewMovieBtn element if reviewMovieBtn is clicked
-    // Function adds d-none class to hide all divs except for the one the user clicks
-    // Function displays reviewThisDiv element then appends the title input form and category dropdown selector to reviewThisDiv element
     function handleMovieReviewSelection() {
+        // Function adds reviewThisDiv class to grandparent div of the reviewMovieBtn element if reviewMovieBtn is clicked
+        // Function adds d-none class to hide all divs except for the one the user clicks
+        // Function displays reviewThisDiv element then appends the title input form and category dropdown selector to reviewThisDiv element
         movieSelection = $(this).parent().parent().children();
         movieSelection.addClass('reviewThisDiv');
         $('div:not(.reviewThisDiv)').addClass('d-none');
@@ -182,21 +191,21 @@ $(document).ready(function () {
         $('#reviewTitleStatic').removeClass('d-none');
         $('#reviewTitleStatic').appendTo('.reviewThisDiv');
 
-        $('#reviewFormStatic').removeClass('d-none');
-        $('#reviewFormStatic').appendTo('.reviewThisDiv');
+        $('#reviewFormIDStatic').removeClass('d-none');
+        $('#reviewFormIDStatic').appendTo('.reviewThisDiv');
 
         $('#categoryStatic').removeClass('d-none');
         $('#categoryStatic').appendTo('.reviewThisDiv');
 
-        var reviewSubmitButton = $('<button type="button" id="reviewSubmitButtonID" class="btn btn-light">Submit Review</button>');
+        var reviewSubmitButton = $('<button type="button" id="reviewMovieSubmitButtonID" class="btn btn-light">Submit Review</button>');
         reviewSubmitButton.appendTo('.reviewThisDiv');
 
     };
 
 
-    // Function creates category url and sends get request to api route at the specified category url
-    // Function then checks if reviews variable is empty or null then calls displayEmpty cb else initializeRows cb
     function getReviews(category) {
+        // Function creates category url and sends get request to api route at the specified category url
+        // Function then checks if reviews variable is empty or null then calls displayEmpty cb else initializeRows cb
         var categoryString = category || "";
         if (categoryString) {
             categoryString = "/category/" + categoryString;
@@ -211,11 +220,11 @@ $(document).ready(function () {
                 initializeRows();
             }
         });
-    }
+    };
 
-    // Function deletes review based on id then calls getReviews cb
-    // Function then passes the genre dropdown selection value into getReviews cb
     function deleteReview(id) {
+        // Function deletes review based on id then calls getReviews cb
+        // Function then passes the genre dropdown selection value into getReviews cb
         $.ajax({
             method: "DELETE",
             url: "/api/reviews" + id
@@ -228,8 +237,8 @@ $(document).ready(function () {
     // Cb called to grab reviews again since they are deleted in deleteReview cb???
     getReviews();
 
-    // Function clears review input text then creates empty variable looping through reviews variable then pushes items to the array and appends those reviews to the array
     function initializeRows() {
+        // Function clears review input text then creates empty variable looping through reviews variable then pushes items to the array and appends those reviews to the array
         reviewContainer.empty();
         var reviewsToAdd = [];
         for (var i = 0; i < reviews.length; i++) {
@@ -238,15 +247,15 @@ $(document).ready(function () {
         reviewContainer.append(reviewsToAdd);
     };
 
-    // Function constructs new review html
-    // Need to ensure function can access reviews.body reviews.category reviews.name
     function createNewRow(reviews) {
+        // Function constructs new review html
+        // Need to ensure function can access reviews.body reviews.category reviews.name
         var newGameRow = gameSelection;
         
         newGameRow = 
         $('.newGameRow').append(`
-        <p>${ reviews.body }</p>
-        <small>Genre: ${ reviews.category }  |  Title: ${ reviews.name }</small>
+        <p>${ reviews.review }</p>
+        <small>Genre: ${ reviews.category }  |  Title: ${ reviews.title }</small>
         <button type="button" class="btn btn-warning delete">DELETE</button> 
         <button type="button" class="btn btn-info edit">EDIT</button>
         `);
@@ -254,9 +263,9 @@ $(document).ready(function () {
         return newGameRow;
     };
     
-    // Function constructs new review html
-    // Need to ensure function can access reviews.body reviews.category reviews.name
     function createNewRow(reviews) {
+        // Function constructs new review html
+        // Need to ensure function can access reviews.body reviews.category reviews.name
         var newMovieRow = movieSelection;
 
         newMovieRow = 
@@ -270,28 +279,28 @@ $(document).ready(function () {
         return newMovieRow;
     };
 
-    // Function grabs the parent element of the delete button and gives it the "review" attribute
-    // Function passes currentReview.id into deleteReview cb????
-    // Function called when user clicks delete button
     function handleReviewDelete() {
+        // Function grabs the parent element of the delete button and gives it the "review" attribute
+        // Function passes currentReview.id into deleteReview cb????
+        // Function called when user clicks delete button
         var currentReview = $(this)
         .parent()
         .data("review");
         deleteReview(currentReview.id);
     };
 
-    // Function grabs the parent element of the edit button and gives it the "review" attribute
-    // Function uses window.location.href to set the current page url to a specific review id
-    // Function called when user clicks edit button
     function handleReviewEdit() {
+        // Function grabs the parent element of the edit button and gives it the "review" attribute
+        // Function uses window.location.href to set the current page url to a specific review id
+        // Function called when user clicks edit button
         var currentReview = $(this)
             .parent()
             .data("review");
-        window.location.href = "/videoGameReviews?review_id=" + currentReview.id;
+        window.location.href = "/cms?review_id=" + currentReview.id;
     };
 
-    // Function empties review input form
     function displayEmpty() {
+        // Function empties review input form
         // reviewContainer.empty();
         var messageH2 = $("<h2>");
         messageH2.css({ "text-align": "center", "margin-top": "50px" });
@@ -299,12 +308,13 @@ $(document).ready(function () {
         reviewContainer.append(messageH2);
     };
 
-    // Function grabs value of genre selected in the category dropdown menu
-    // Function passes selected genre into getReviews cb
     function handleCategoryChange() {
+        // Function grabs value of genre selected in the category dropdown menu
+        // Function passes selected genre into getReviews cb
         var newReviewCategory = $(this).val();
         getReviews(newReviewCategory);
     };
+
 
 });
 

@@ -30,11 +30,11 @@ app.set("view engine", "handlebars", "html");
 
 // Handlebars Routing get
 app.get("/", function(req, res) {
-  res.render("homepage");
+    res.render("homepage");
 });
 
 app.get("/era", function(req, res) {
-  res.render("era");
+    res.render("era");
 });
 
 // Routes

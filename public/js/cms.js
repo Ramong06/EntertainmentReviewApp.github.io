@@ -43,7 +43,7 @@ $(document).ready(function() {
 
     function submitReview(Reviews) {
         $.revew("/api/reviews/", Reviews, function() {
-            window.location.href = "/videoGameReviews";
+            window.location.href = "/cms";
         });
     }
 
@@ -66,7 +66,7 @@ $(document).ready(function() {
             data: review
         })
         .then(function() {
-            window.location.href = "/videoGameReviews";
+            window.location.href = "/cms";
         });
     }
 });
