@@ -18,13 +18,13 @@ module.exports = function(app) {
     });
 
     // videogamereviews route loads videoGameReviews.html
-    app.get("/videogamereviews", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/videoGameReviews.html"));
+    app.get("/cms", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/cms.html"));
     });
 
-    // // moviereviews route loads movieReviews.html
-    // app.get("/moviereviews", function(req, res) {
-    //     res.sendFile(path.join(__dirname, "./movieReviews.html"));
-    // });
+    // moviereviews route loads movieReviews.html
+    app.get("/testProj2", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/testProj2.html"));
+    });
 
 };
