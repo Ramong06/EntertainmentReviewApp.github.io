@@ -9,21 +9,37 @@ $(document).ready(function () {
 
     // Set up listeners on reviewGameSubmitButtonID and reviewMovieSubmitButtonID
     // Buttons dynamically created in handleGameReviewSelection cb
-    $(document).on("click","button.reviewGameSubmitButtonID", handleNewGameReviewSubmission);
-    $(document).on("click","button.reviewMovieSubmitButtonID", handleNewMovieReviewSubmission);
+    $(document).on("click","button#reviewGameSubmitButtonID", handleNewGameReviewSubmission);
+    $(document).on("click","button#reviewMovieSubmitButtonID", handleNewMovieReviewSubmission);
 
-    function handleNewGameReviewSubmission(id) {
+    function handleNewGameReviewSubmission(e) {
+        console.log('Click event');
+        console.log($('#reviewTitleStatic').val());
+        console.log($('#reviewFormIDStatic').val());
+        console.log($('#categoryStatic option:selected').val());
         // Grab review title, category, and container elements after user clicks submit review button
         console.group('Review Form Items');
-        console.log(reviewContainerTitle);
+        console.log($('#reviewTitleStatic'));
         console.log(reviewCategory);
         console.log(reviewContainer);
         console.groupEnd();
 
+        var formData = {
+            title: $('#reviewTitleStatic').val(),
+            body: $('#reviewFormIDStatic').val(),
+            category: $('#categoryStatic option:selected').val()
+        }
         // getReviews();
+        $.ajax({
+            url: "/api/reviews",
+            method: "POST",
+            data: formData
+        }).then( function (response) {
+            window.location.href = "/cms";
+        })
     };
 
-    function handleNewMovieReviewSubmission() {
+    function handleNewMovieReviewSubmission(e) {
         // Grab review title, category, and container elements after user clicks submit review button
         console.group('Review Form Items');
         console.log(reviewContainerTitle);
@@ -31,7 +47,19 @@ $(document).ready(function () {
         console.log(reviewContainer);
         console.groupEnd();
 
+        var formData = {
+            title: $('#reviewTitleStatic').val(),
+            body: $('#reviewFormIDStatic').val(),
+            category: $('#categoryStatic option:selected').val()
+        }
         // getReviews();
+        $.ajax({
+            url: "/api/reviews",
+            method: "POST",
+            data: formData
+        }).then( function (response) {
+            window.location.href = "/cms";
+        })
     };
 
     // Set up listeners on reviewGameBtn and reviewMovieBtn
@@ -129,8 +157,39 @@ $(document).ready(function () {
         });
     };
 
+    var reviewGameFormContainer = `    <div class="reviewGameFormContainer container col-md-6 col-sm-6 shadow-sm p-3 mb-5 bg-white rounded">
+
+    <div id="reviewTitle" class="input-group my-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+        </div>
+        <input id="reviewTitleStatic" type="text" value="" class="form-control" name="reviewTitleStatic" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Title Review">
+    </div>
+
+    <div id="reviewForm" class="md-form my-1">
+        <textarea id="reviewFormIDStatic" class="md-textarea form-control" rows="3" placeholder="Enter your review..." ></textarea>
+        <label for="reviewFormIDStatic"></label>
+    </div>
+
+    <div id="reviewCategory" class="form-group">
+        <select class="custom-select" id="categoryStatic">
+            <option selected value="">All Genres</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="comedy">Comedy</option>
+            <option value="crime">Crime</option>
+            <option value="horror">Horror</option>
+            <option value="sports">Sports</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+
+    <button type="button" id="reviewGameSubmitButtonID" class="btn btn-light">Submit Review</button>
+
+</div>`;
+
     function handleGameReviewSelection() {
-        
+        console.log('handle game review');
         // Grab grandparent div of reviewGameBtn when clicked
         gameSelection = $(this).parent().parent().children();
         gameSelection.addClass('reviewThisDiv');
@@ -139,22 +198,24 @@ $(document).ready(function () {
         // Hide reviewGameBtn
         $('.reviewGameBtn').addClass('d-none');
         $('.reviewThisDiv').appendTo('body');
-        
-        $('.reviewThisDiv').wrap( "<div class='container col-md-6 col-sm-6 shadow-sm p-3 mb-5 bg-white rounded'></div>" );
-        
-        $('#reviewTitleStatic').removeClass('d-none');
-        $('#reviewTitleStatic').appendTo('.reviewThisDiv');
-        
-        $('#reviewFormIDStatic').removeClass('d-none');
-        $('#reviewFormIDStatic').appendTo('.reviewThisDiv');
-        
-        $('#categoryStatic').removeClass('d-none');
-        $('#categoryStatic').appendTo('.reviewThisDiv');
-        
-        // Display reviewThisDiv element with title input form and genre dropdown menu appended
-        var reviewSubmitButton = $('<button type="button" id="reviewGameSubmitButtonID" class="btn btn-light">Submit Review</button>');
-        reviewSubmitButton.appendTo('.reviewThisDiv');
 
+        $('.reviewThisDiv').wrap( "<div class='container col-md-6 col-sm-6 shadow-sm p-3 mb-5 bg-white rounded'></div>" );
+
+        // $('#reviewTitleStatic').removeClass('d-none');
+        // $('#reviewTitleStatic').appendTo('.reviewThisDiv');
+
+        // $('#reviewFormIDStatic').removeClass('d-none');
+        // $('#reviewFormIDStatic').appendTo('.reviewThisDiv');
+
+        // $('#categoryStatic').removeClass('d-none');
+        // $('#categoryStatic').appendTo('.reviewThisDiv');
+        var container = $("<div>").attr("id","reviewGameFormContainer").html(reviewGameFormContainer);
+
+        // Display reviewThisDiv element with title input form and genre dropdown menu appended
+
+        // container.appendTo('.reviewThisDiv');
+
+        $("body").append(container);
     };
 
     function getMovieDetails() {
@@ -187,29 +248,64 @@ $(document).ready(function () {
         });
     };
 
+    var reviewMovieFormContainer = `    <div class="reviewMovieFormContainer container col-md-6 col-sm-6 shadow-sm p-3 mb-5 bg-white rounded">
+        
+    <div id="reviewTitle" class="input-group my-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+        </div>
+        <input id="reviewTitleStatic" type="text" value="" class="form-control" name="reviewTitleStatic" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Title Review">
+    </div>
+    
+    <div id="reviewForm" class="md-form my-1">
+        <textarea id="reviewFormIDStatic" class="md-textarea form-control" rows="3" placeholder="Enter your review..." ></textarea>
+        <label for="reviewFormIDStatic"></label>
+    </div>
+    
+    
+    <div id="reviewCategory" class="form-group">
+        <select class="custom-select" id="categoryStatic">
+            <option selected value="">All Genres</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="comedy">Comedy</option>
+            <option value="crime">Crime</option>
+            <option value="horror">Horror</option>
+            <option value="sports">Sports</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+    
+    <button type="button" id="reviewMovieSubmitButtonID" class="btn btn-light">Submit Review</button>
+    
+</div>`;
+
+
     function handleMovieReviewSelection() {
         // Grab grandparent div of reviewGameBtn when clicked
         movieSelection = $(this).parent().parent().children();
         movieSelection.addClass('reviewThisDiv');
-        // Hide all divs except for the one clicked by user
+        // // Hide all divs except for the one clicked by user
         $('div:not(.reviewThisDiv)').addClass('d-none');
-        // Hide reviewMovieBtn
+        // // Hide reviewMovieBtn
         $('.reviewMovieBtn').addClass('d-none');
         $('.reviewThisDiv').appendTo('body');
 
         $('.reviewThisDiv').wrap( "<div class='container col-md-6 col-sm-6 shadow-sm p-3 mb-5 bg-white rounded'></div>" );
 
-        $('#reviewTitleStatic').removeClass('d-none');
-        $('#reviewTitleStatic').appendTo('.reviewThisDiv');
+        // $('#reviewTitleStatic').removeClass('d-none');
+        // $('#reviewTitleStatic').appendTo('.reviewThisDiv');
 
-        $('#reviewFormIDStatic').removeClass('d-none');
-        $('#reviewFormIDStatic').appendTo('.reviewThisDiv');
+        // $('#reviewFormIDStatic').removeClass('d-none');
+        // $('#reviewFormIDStatic').appendTo('.reviewThisDiv');
 
-        $('#categoryStatic').removeClass('d-none');
-        $('#categoryStatic').appendTo('.reviewThisDiv');
-        // Display reviewThisDiv element with title input form and genre dropdown menu appended
-        var reviewSubmitButton = $('<button type="button" id="reviewMovieSubmitButtonID" class="btn btn-light">Submit Review</button>');
-        reviewSubmitButton.appendTo('.reviewThisDiv');
+        // $('#categoryStatic').removeClass('d-none');
+        // $('#categoryStatic').appendTo('.reviewThisDiv');
+        var container = $("<div>").attr("id","reviewMovieFormContainer").html(reviewMovieFormContainer);
+        $("body").append(container);
+        // // Display reviewThisDiv element with title input form and genre dropdown menu appended
+        // var reviewSubmitButton = $('<button type="button" id="reviewMovieSubmitButtonID" class="btn btn-light">Submit Review</button>');
+        // reviewSubmitButton.appendTo('.reviewThisDiv');
     };
 
     function getReviews(category) {
@@ -276,15 +372,15 @@ $(document).ready(function () {
         return newGameRow;
     };
     
-    function createNewRow(reviews) {
+    function createNewRow(review) {
         // Function constructs new review html
         // Need to ensure function can access reviews.body reviews.category reviews.name
         var newMovieRow = movieSelection;
 
         newMovieRow = 
         $('.newMovieRow').append(`
-            <p>${ reviews.body }</p>
-            <small>Genre: ${ reviews.category }  |  Title: ${ reviews.name }</small>
+            <p>${ review.body }</p>
+            <small>Genre: ${ review.category }  |  Title: ${ review.name }</small>
             <button type="button" class="btn btn-warning delete">DELETE</button>
             <button type="button" class="btn btn-info edit">EDIT</button>
         `);
@@ -328,6 +424,40 @@ $(document).ready(function () {
         getReviews(newReviewCategory);
     };
 
-
-
 });
+
+/*
+
+    var reviewFormContainer = `    <div class="reviewFormContainer container col-md-6 col-sm-6 shadow-sm p-3 mb-5 bg-white rounded">
+        
+    <div id="reviewTitle" class="input-group my-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+        </div>
+        <input id="reviewTitleStatic" type="text" value="" class="form-control" name="reviewTitleStatic" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Title Review">
+    </div>
+    
+    <div id="reviewForm" class="md-form my-1">
+        <textarea id="reviewFormIDStatic" class="md-textarea form-control" rows="3" placeholder="Enter your review..." ></textarea>
+        <label for="reviewFormIDStatic"></label>
+    </div>
+    
+    
+    <div id="reviewCategory" class="form-group">
+        <select class="custom-select" id="categoryStatic">
+            <option selected value="">All Genres</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="comedy">Comedy</option>
+            <option value="crime">Crime</option>
+            <option value="horror">Horror</option>
+            <option value="sports">Sports</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+    
+    <button type="button" id="reviewGameSubmitButtonID" class="btn btn-light">Submit Review</button>
+    
+</div>`;
+
+*/
