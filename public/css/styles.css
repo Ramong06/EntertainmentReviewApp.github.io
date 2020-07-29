@@ -3,7 +3,7 @@ html {
   background-color: #343a40;
   height: 100%;
 }
-h2 {
+gst h2 {
   text-align: center;
   color: white;
 }
@@ -23,6 +23,7 @@ h5 {
   font-size: small;
   text-align: right;
 }
+
 .card {
   margin-top: 70px !important;
   background-color: lightgray;
@@ -32,16 +33,19 @@ h5 {
   padding-right: 15px;
   margin-top: 10px;
 }
+
 .btn {
   font-size: 14px;
   width: 100px;
   color: lightgray;
   background-color: darkred;
 }
+
 .btn:hover {
   background-color: #ac2219;
   color: lightgray;
 }
+
 .intro-logo {
   padding-top: 70px;
   height: auto;
@@ -49,24 +53,30 @@ h5 {
   max-width: 350px;
   max-height: 350px;
 }
+
 .card-title {
   padding-bottom: 5px;
 }
+
 .navbar.bg-dark {
   background-color: #97a7b7 !important;
 }
+
 main {
   margin-top: 250px;
 }
+
 .min-logo {
   height: auto;
   width: auto;
   max-width: 100px;
   max-height: 100px;
 }
+
 .user-logo {
   display: block;
   margin: auto;
+
   padding: 10px;
   height: auto;
   width: auto;
@@ -78,8 +88,10 @@ main {
   margin: 10px;
   background-color: #97a7b7;
 }
+
 .card {
   margin-top: 70px !important;
+
   padding-top: 15px;
   padding-bottom: 20px;
   padding-left: 15px;
