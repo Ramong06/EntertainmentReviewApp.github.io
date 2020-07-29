@@ -273,7 +273,7 @@ $(document).ready(function () {
         var currentReview = $(this)
             .parent()
             .data("review");
-        window.location.href = "/videoGameReviews.html?review_id=" + currentReview.id;
+        window.location.href = "/videoGameReviews?review_id=" + currentReview.id;
     };
 
     // Function empties review input form
@@ -281,7 +281,7 @@ $(document).ready(function () {
         reviewContainer.empty();
         var messageH2 = $("<h2>");
         messageH2.css({ "text-align": "center", "margin-top": "50px" });
-        messageH2.html("No reviews yet for this genre, navigate <a href='../testProj2'>here</a> in order to create a new review.");
+        messageH2.html("No reviews yet for this genre, navigate <a href='../'>here</a> in order to create a new review.");
         reviewContainer.append(messageH2);
     };
 
