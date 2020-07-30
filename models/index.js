@@ -31,18 +31,6 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-// Hooking up project with JawsDB
-// if (process.env.JAWSDB_URL) {
-//   connection = mysql.createConnection(process.env.JAWSDB_URL);
-// } else {
-//   connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'Bjbootcamp1!',
-//     database: 'reviewApp'
-//   });
-// };
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
