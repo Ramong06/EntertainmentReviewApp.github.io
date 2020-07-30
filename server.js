@@ -37,6 +37,10 @@ app.get("/era", function(req, res) {
     res.render("era");
 });
 
+app.get("/cms", function(req, res) {
+  res.render("cms");
+});
+
 // Routes
 // =============================================================
 require("./routes/testAPIRoutes.js")(app);

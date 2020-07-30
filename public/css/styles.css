@@ -1,18 +1,24 @@
-
 body,
 html {
   background-color: #343a40;
   height: 100%;
 }
-h2 {
+gst h2 {
   text-align: center;
+  color: white;
+}
+h3,
+h4,
+.radioSelect {
   color: white;
 }
 h5 {
   text-align: center;
   font-size: 20px;
 }
-
+.jumbotron {
+  background-color: #2e3338;
+}
 .alt-sign-in {
   font-size: small;
   text-align: right;
@@ -77,22 +83,23 @@ main {
   max-width: 300px;
   max-height: 300px;
 }
-@media (min-width: 768px) {
-  aside {
-    height: 100%;
-  }
-}
-
-.jumbotron {
-  background-color: #2e3338;
-}
-
 .newReview {
   padding: 10px;
   margin: 10px;
   background-color: #97a7b7;
 }
 
-.radio-selection {
-  color: white;
+.card {
+  margin-top: 70px !important;
+
+  padding-top: 15px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 10px;
+}
+@media (min-width: 768px) {
+  aside {
+    height: 100%;
+  }
 }

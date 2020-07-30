@@ -43,7 +43,6 @@ $(document).ready(function() {
     var reviewId;
     // Set flag for whether or not user is updating a post to be false initially
     var updating = false;
-
     // Pull post id from the url
     // Conditional checks to see whether value to the right of the = is not null
     // Grabs value of the  review id

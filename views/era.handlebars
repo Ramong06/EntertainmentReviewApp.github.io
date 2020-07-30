@@ -1,204 +1,163 @@
-<style>
+  <!-- Navigation Bar -->
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark secondary-color lighten-1">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+    aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link pl-0" href="#"
+          ><i class="fa fa-star fa-fw"></i>
+          <span class="d-none d-md-inline">My Ratings</span></a>
+      </li>
 
-body,
-html {
-  background-color: #343a40;
-  height: 100%;
-}
-h2 {
-  text-align: center;
-  color: white;
-}
-h5 {
-  text-align: center;
-  font-size: 20px;
-}
+      <li class="nav-item">
+        <a class="nav-link pl-0" href="#"
+          ><i class="fa fa-film fa-fw"></i>
+           <span class="d-none d-md-inline">Movies</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pl-0" href="#"
+          ><i class="fa fa-gamepad fa-fw"></i>
+            <span class="d-none d-md-inline">Games</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pl-0" href="./testProj2.html"
+          ><i class="fa fa-search fa-fw"></i>
+            <span class="d-none d-md-inline">Search</span></a>
+      </li>
+     </ul>
+        <span class="navbar-text white-text">
+      <a href="login.html">Log In</a> or <a href="signup.html">Sign Up</a>
+        </span>
+  </div>
+</nav>
 
-.alt-sign-in {
-  font-size: small;
-  text-align: right;
-}
 
-.card {
-  margin-top: 70px !important;
-  background-color: lightgray;
-  padding-top: 15px;
-  padding-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-top: 10px;
-}
-
-.btn {
-  font-size: 14px;
-  width: 100px;
-  color: lightgray;
-  background-color: darkred;
-}
-
-.btn:hover {
-  background-color: #ac2219;
-  color: lightgray;
-}
-
-.intro-logo {
-  padding-top: 70px;
-  height: auto;
-  width: auto;
-  max-width: 350px;
-  max-height: 350px;
-}
-
-.card-title {
-  padding-bottom: 5px;
-}
-
-.navbar.bg-dark {
-  background-color: #97a7b7 !important;
-}
-
-main {
-  margin-top: 250px;
-}
-
-.min-logo {
-  height: auto;
-  width: auto;
-  max-width: 100px;
-  max-height: 100px;
-}
-
-.user-logo {
-  display: block;
-  margin: auto;
-
-  padding: 10px;
-  height: auto;
-  width: auto;
-  max-width: 300px;
-  max-height: 300px;
-}
-@media (min-width: 768px) {
-  aside {
-    height: 100%;
-  }
-}
-
-.jumbotron {
-  background-color: #2e3338;
-}
-
-.newReview {
-  padding: 10px;
-  margin: 10px;
-  background-color: #97a7b7;
-}
-
-.radio-selection {
-  color: white;
-}
-</style>
-    
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="./testProj2.html">Entertainment Review App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                <a class="nav-link" href="./testProj2.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="./videoGameReviews.html">Reviews</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <br>
-
-    <div class="radioButton">
-        <h2>Do you want to search for a video game or a movie?</h2>
-        <form>
-            <input type="radio" id="gameSelector" name="searchSelection" value="gameSelector">
-            <label for="gameSelector">Video Game</label><br>
-            <input type="radio" id="movieSelector" name="searchSelection" value="movieSelector">
-            <label for="movieSelector">Movie</label><br>
-        </form> 
-        <br><br>
-        <hr>
-    </div><!-- .radioButton -->
-
-    <div id="videoGameSearchID" class="videoGameSearch d-none">
-        <h3>Video Game API</h3>
-        <form>
-            <label for="gameTitle">Game Title:</label><br>
-            <input type="text" id="gameTitle" name="gameTitle">
-            <br><br>
-            <input class="submitGameBtn" type="submit" value="Submit">
-        </form>
-
-        <br><br><hr>
-    </div><!-- .videoGameSearch -->
-
-    <div id="movieSearchID" class="movieSearch d-none">
-        <h3>Movie API</h3>
-        <form>
-            <label for="movieTitle">Movie Title:</label><br>
-            <input type="text" id="movieTitle" name="movieTitle">
-            <br><br>
-            <input class="submitMovieBtn" type="submit" value="Submit">
-        </form>
-
-        <br><br><br>
-        <hr>
-    </div><!-- .movieSearch -->
-
-    <div id="cardDivID" class="cardDiv d-none">
-        <h2>API Output Area</h2>
+     <div class="jumbotron">
+      <img class="user-logo" src="assets/entertaintmentlogo.png" />
     </div>
 
-    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
 
+
+    <div class="radioButton">
+      <h4>Do you want to search for a video game or a movie?</h4>
+      <form class>
+        <input
+          type="radio"
+          id="gameSelector"
+          name="searchSelection"
+          value="gameSelector"
+        />
+        <label class="radioSelect" for="gameSelector"><i class="fa fa-gamepad fa-fw"></i> Game</label><br />
+        <input
+        
+          type="radio"
+          id="movieSelector"
+          name="searchSelection"
+          value="movieSelector"
+        />
+        <label class="radioSelect" for="movieSelector"><i class="fa fa-film fa-fw"></i> Movie</label><br />
+      </form>
+ 
+     
+    </div>
+    <!-- .radioButton -->
+
+    <div id="videoGameSearchID" class="videoGameSearch d-none">
+      <h3>Search for a Game</h3>
+      <form>
+        <input type="text" id="gameTitle" name="gameTitle" placeholder="Search by Title" />
+        <br /><br />
+        <input class=" btn submitGameBtn" type="submit" value="Submit" />
+      </form>
+
+
+     
+    </div>
+    <!-- .videoGameSearch -->
+
+    <div id="movieSearchID" class="movieSearch d-none">
+      <h3>Search for a Movie</h3>
+      <form>
+    
+        <input type="text" id="movieTitle" name="movieTitle" placeholder="Search by Title" />
+        <br /><br />
+        <input class="btn submitMovieBtn" type="submit" value="Submit" />
+      </form>
+
+
+      
+    </div>
+    <!-- .movieSearch -->
+
+    <div id="cardDivID" class="cardDiv d-none">
+      <h2>Your Search Results</h2>
+    </div>
+
+    <br />
     <div id="reviewTitle" class="input-group my-2 d-none">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-        </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Title Review">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Default</span
+        >
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        placeholder="Title Review"
+      />
     </div>
 
     <div id="reviewForm" class="md-form my-1 d-none">
-        <textarea id="reviewFormID" class="md-textarea form-control" rows="3" placeholder="Enter your review..." ></textarea>
-        <label for="reviewFormID"></label>
+      <textarea
+        id="reviewFormID"
+        class="md-textarea form-control"
+        rows="3"
+        placeholder="Enter your review..."
+      ></textarea>
+      <label for="reviewFormID"></label>
     </div>
 
-
     <div id="reviewCategory" class="form-group d-none">
-        <select class="custom-select" id="category">
-            <option selected value="">All Genres</option>
-            <option value="action">Action</option>
-            <option value="adventure">Adventure</option>
-            <option value="comedy">Comedy</option>
-            <option value="crime">Crime</option>
-            <option value="horror">Horror</option>
-            <option value="sports">Sports</option>
-            <option value="Other">Other</option>
-        </select>
+      <select class="custom-select" id="category">
+        <option selected value="">All Genres</option>
+        <option value="action">Action</option>
+        <option value="adventure">Adventure</option>
+        <option value="comedy">Comedy</option>
+        <option value="crime">Crime</option>
+        <option value="horror">Horror</option>
+        <option value="sports">Sports</option>
+        <option value="Other">Other</option>
+      </select>
     </div>
 
     <!--  jQuery Minified -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Bootsrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+
     <!-- Custom -->
     <script src="./js/testProj2.js" type="text/javascript"></script>
     <!-- Axios -->
