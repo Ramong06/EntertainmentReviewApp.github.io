@@ -1,3 +1,5 @@
+// const { Sequelize } = require("sequelize/types");
+
 $(document).ready(function() {
 
     // $('#cmsTitle').empty();
@@ -11,21 +13,25 @@ $(document).ready(function() {
     //     }
     // });
 
-    $.get("/api/reviews/", function(data) {
-        
-        if(data.length !== 0) {
-            for (var i = 0; i < data.lenth; i++) {
-                var row = $("<div>");
-                row.addClass("cmsPost");
+    // var sequelize = new Sequelize('db', 'username', 'Bjbootcamp1!', {
+    //     logging: console.log
+    // }
 
-                row.append("<p>" + data[i].title + " </p>");
-                row.append("<p>" + data[i].category + " </p>");
-                row.append("<p>Review: " + data[i].body + "</p>");
+    // $.get("/api/reviews/", (data) {
 
-                $('#cmsArea').append(row);
-            }
-        }
-    })
+    //     if(data.length !== 0) {
+    //         for (var i = 0; i < data.lenth; i++) {
+    //             var row = $("<div>");
+    //             row.addClass("cmsPost");
+
+    //             row.append("<p>" + data[i].title + " </p>");
+    //             row.append("<p>" + data[i].category + " </p>");
+    //             row.append("<p>Review: " + data[i].body + "</p>");
+
+    //             $('#cmsArea').append(row);
+    //         }
+    //     }
+    // })
 
     var reviewTitleStatic = $('#reviewTitleStatic').load( "ajax/testProj2.html #reviewTitleStatic");
     console.group('Title from testProj2.html file!');
@@ -37,7 +43,7 @@ $(document).ready(function() {
     var reviewId;
     // Set flag for whether or not user is updating a post to be false initially
     var updating = false;
-    
+
     // Pull post id from the url
     // Conditional checks to see whether value to the right of the = is not null
     // Grabs value of the  review id
