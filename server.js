@@ -5,6 +5,7 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+var compression = require('compression');
 
 // Sets up the Express App
 // =============================================================
@@ -20,6 +21,18 @@ app.use(express.json());
 
 // Static directory
 app.use(express.static("public"));
+
+//Sets up the NPM Compression middleware module
+app.use(compression({ filter: shouldCompress })) 
+
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+    // fallback to standard filter function
+  }
+  return compression.filter(req,res)
+}
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
